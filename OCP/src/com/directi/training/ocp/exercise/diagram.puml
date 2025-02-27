@@ -1,0 +1,19 @@
+@startuml
+class Resource {
+    +allocate(): int
+    +free(int resourceId)
+}
+
+class TimeSlotResource {
+    +allocate(): int
+    +free(int resourceId)
+}
+
+class SpaceSlotResource {
+    +allocate(): int
+    +free(int resourceId)
+}
+
+Resource <|-- TimeSlotResource
+Resource <|-- SpaceSlotResource
+@enduml
