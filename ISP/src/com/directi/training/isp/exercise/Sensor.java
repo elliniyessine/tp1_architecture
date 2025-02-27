@@ -2,20 +2,17 @@ package com.directi.training.isp.exercise;
 
 import java.util.Random;
 
-public class Sensor
-{
-    public void register(Door door)
-    {
+public class Sensor {
+    public void register(ProximitySensorClient client) { 
         while (true) {
             if (isPersonClose()) {
-                door.proximityCallback();
+                client.proximityCallback();
                 break;
             }
         }
     }
 
-    private boolean isPersonClose()
-    {
+    private boolean isPersonClose() {
         return new Random().nextBoolean();
     }
 }
