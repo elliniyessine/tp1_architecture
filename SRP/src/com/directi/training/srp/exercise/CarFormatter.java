@@ -1,3 +1,4 @@
+package com.directi.training.srp.exercise;
 public class CarFormatter
 {
     public String carToString(Car car)
