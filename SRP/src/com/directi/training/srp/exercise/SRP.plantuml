@@ -1,4 +1,10 @@
 @startuml
+left to right direction
+
+interface CarRepository {
+    + getFromDb(carId: String) : Car
+    + getCars() : List<Car>
+}
 
 class Car {
     - _id : String
@@ -11,8 +17,10 @@ class Car {
 }
 
 class CarDB {
-    + _carsDB : List<Car>
+    - _carsDB : List<Car>
+    + getInstance() : CarDB
     + getFromDb(carId: String) : Car
+    + getCars() : List<Car>
 }
 
 class CarComparer {
@@ -25,11 +33,11 @@ class CarFormatter {
     + getAllCarNames() : String
 }
 
-CarDB -->  Car
-CarComparer -->  Car
-CarComparer -->  CarDB
+CarRepository <|.. CarDB
+CarDB --> Car
+CarComparer --> Car
+CarComparer --> CarRepository
 CarFormatter --> Car
-CarFormatter --> CarDB
+CarFormatter --> CarRepository
 
 @enduml
-
