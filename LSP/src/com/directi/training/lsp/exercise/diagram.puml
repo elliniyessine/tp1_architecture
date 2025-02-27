@@ -1,0 +1,18 @@
+@startuml
+interface DuckInterface {
+    +quack()
+    +swim()
+}
+
+class Duck implements DuckInterface {
+    +quack()
+    +swim()
+}
+
+class ElectronicDuck implements DuckInterface {
+    -_on: boolean
+    +turnOn()
+    +turnOff()
+    +quack()
+    +swim()
+}
