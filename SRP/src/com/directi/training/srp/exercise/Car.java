@@ -1,4 +1,3 @@
-package com.directi.training.srp.exercise;
 
 public class Car
 {

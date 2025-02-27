@@ -1,5 +1,9 @@
 public class CarComparer
 {
+    private final CarRepository carDB;  
+    public CarComparer(CarRepository carRepository) {
+        this.carDB = carRepository;
+    }
     public Car compareCar(Car c1, Car c2)
     {
         if (c1 == null)
@@ -7,12 +11,12 @@ public class CarComparer
         else if (c2 == null)
             return c1;
         else
-            return c1.getModel().compareTo(bestCar.getModel()) > 0;
+            return c1.getModel().compareTo(c2.getModel()) > 0 ? c1 : c2;
     }
     public Car getBestCar()
     {
         Car bestCar = null;
-        for (Car car: CarDB._carsDB)
+        for (Car car: carDB.getCars())
         {
            bestCar = compareCar(bestCar, car);
         }

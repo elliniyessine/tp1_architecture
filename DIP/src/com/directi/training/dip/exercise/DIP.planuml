@@ -1,0 +1,44 @@
+@startuml
+interface DataProcessor {
+    + read() : String
+    + write(data: String) : void
+}
+
+class FileProcessor {
+    - inputFilePath : String
+    - outputFilePath : String
+    + read() : String
+    + write(data: String) : void
+}
+
+class WebDatabaseProcessor {
+    - urlString : String
+    - database : MyDatabase
+    + read() : String
+    + write(data: String) : void
+}
+
+class MyDatabase {
+    + write(data: String) : void
+}
+
+class EncodingModule {
+    - dataProcessor : DataProcessor
+    + process() : void
+}
+
+class EncodingModuleClient {
+    + main(args: String[]) : void
+}
+
+EncodingModuleClient --> EncodingModule
+
+DataProcessor <|-- FileProcessor
+DataProcessor <|-- WebDatabaseProcessor
+
+WebDatabaseProcessor --> MyDatabase
+
+EncodingModule -[hidden]-> EncodingModuleClient
+EncodingModule <-left- DataProcessor
+
+@enduml
